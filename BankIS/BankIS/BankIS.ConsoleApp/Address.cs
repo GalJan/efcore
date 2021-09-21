@@ -8,6 +8,10 @@ namespace BankIS.ConsoleApp
 {
     public class Address
     {
+        public Address()
+        {
+
+        }
         public Address(string street, string city) 
         {
             Street = street;
