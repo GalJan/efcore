@@ -12,6 +12,8 @@ namespace BankIS.ConsoleApp
 
         public int Age { get; set; }
 
+        public Address HomeAddress {  get; set; }   
+
         public void Print()
         {
             Console.WriteLine(Name);
