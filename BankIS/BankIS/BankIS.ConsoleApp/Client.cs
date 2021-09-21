@@ -20,12 +20,13 @@ namespace BankIS.ConsoleApp
             HomeAddress.Street = street;
             HomeAddress.City = city;    
         }
-        public Client(string name, string street, string city)
+        public Client(string name, string street, string city,int age)
         {
             HomeAddress = new Address();   
             Name = name;
             HomeAddress.Street = street;   
             HomeAddress.City = city;    
+            Age = age;  
         }
         public string Name { get; set; }
 
@@ -37,14 +38,15 @@ namespace BankIS.ConsoleApp
         {
 
             Console.WriteLine(Name);
-            
+            Console.WriteLine(Age);
+
             if (HomeAddress != null && !string.IsNullOrEmpty(HomeAddress.Street))
             {
-                Console.WriteLine("{0}, {1}", street, city);
+                HomeAddress.Print(street, city);
             }
             else
             {
-                Console.WriteLine("Adresa nezadana!");
+                Console.WriteLine("Adresa nezadana!\n");
             }
             //Console.WriteLine(HomeAddress.City);
         }

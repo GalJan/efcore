@@ -13,12 +13,12 @@ namespace BankIS.ConsoleApp
             //ostrava.City = "Ostrava";
             //ostrava.Street = "Tovarni 13";
 
-            Client client1=new Client("Machova 126","Machova");
+            Client client1=new Client("Machova 77","Machova");
 
             client1.Name = "Jan Novak";
             client1.Age = 31;
 
-            Client client2 = new Client("Jan Gala", "Machova 126", "Myslocovice");
+            Client client2 = new Client("Pepa Koutny", "Machova 126", "Myslocovice",26);
             //client1.HomeAddress = ostrava;
             //client1.HomeAddress.Street = "Sochorova 23";
             //client1.HomeAddress.City = "Brno";
@@ -34,7 +34,7 @@ namespace BankIS.ConsoleApp
             
 
             client1.Print(client1.HomeAddress.Street,client1.HomeAddress.City);
-            Console.WriteLine();
+            
             client2.Print(client2.HomeAddress.Street, client2.HomeAddress.City);
         }
 
