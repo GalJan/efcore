@@ -8,7 +8,8 @@ namespace BankIS.ConsoleApp
         {
             Console.WriteLine("Hello World!");
 
-            Address ostrava = new Address();
+            Address ostrava = new Address("Tovarni 13", "Ostrava");
+
             ostrava.City = "Ostrava";
             ostrava.Street = "Tovarni 13";
 
@@ -16,22 +17,22 @@ namespace BankIS.ConsoleApp
 
             client1.Name = "Jan Novak";
             client1.Age = 31;
-            client1.HomeAddress = new Address();
-            client1.HomeAddress.Street = "Sochorova 23";
-            client1.HomeAddress.City = "Brno";
+            client1.HomeAddress = ostrava;
+            //client1.HomeAddress.Street = "Sochorova 23";
+            //client1.HomeAddress.City = "Brno";
 
             Client client2 = new Client();
 
             client2.Name = "Petr Skocdopole";
             client2.Age = 25;
-            client2.HomeAddress = new Address();
+            client2.HomeAddress = new Address("","");
             client2.HomeAddress.Street = "2. Ulice";
             client2.HomeAddress.City = "Praha";
 
             
 
-            client1.Print();
-            client2.Print();
+            client1.Print(client1.HomeAddress.Street,client1.HomeAddress.City);
+            client2.Print(client2.HomeAddress.Street, client2.HomeAddress.City);
         }
 
     }

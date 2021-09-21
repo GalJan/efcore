@@ -14,11 +14,12 @@ namespace BankIS.ConsoleApp
 
         public Address HomeAddress {  get; set; }   
 
-        public void Print()
+        public void Print(string street, string city)
         {
+              
             Console.WriteLine(Name);
-            Console.WriteLine(HomeAddress.Street);
-            Console.WriteLine(HomeAddress.City);
+            Console.WriteLine("{0},{1}",street,city);
+            //Console.WriteLine(HomeAddress.City);
         }
     }
 }
