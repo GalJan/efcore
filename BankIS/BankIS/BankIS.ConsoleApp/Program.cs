@@ -13,7 +13,14 @@ namespace BankIS.ConsoleApp
             client1.Name = "Jan Novak";
             client1.Age = 31;
 
+            Client client2 = new Client();
+
+            client2.Name = "Petr Skocdopole";
+            client2.Age = 25;
+
             client1.Print();
+            client2.Print();
         }
+
     }
 }
