@@ -24,7 +24,7 @@ namespace BankIS.ConsoleApp
         public void Print(string street, string city)
         {
           
-            Console.WriteLine("{0}\n{1}", street, city);
+            Console.WriteLine("{0}\n{1}\n", street, city);
         }
     }
 }

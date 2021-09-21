@@ -31,11 +31,14 @@ namespace BankIS.ConsoleApp
             //client2.HomeAddress.Street = "2. Ulice";
             //client2.HomeAddress.City = "Praha";
 
-            
+            Console.WriteLine("Client1: " + client1.ToString() + "\n");
 
             client1.Print(client1.HomeAddress.Street,client1.HomeAddress.City);
             
             client2.Print(client2.HomeAddress.Street, client2.HomeAddress.City);
+
+            client1.SaveToFile("Client1.txt");
+            client2.SaveToFile("Client2.txt");
         }
 
     }

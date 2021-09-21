@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+
 
 namespace BankIS.ConsoleApp
 {
@@ -30,7 +32,30 @@ namespace BankIS.ConsoleApp
         }
         public string Name { get; set; }
 
-        public int Age { get; set; }
+        //public int Age { get; set; }
+        private int _age;
+        private bool _isOverAge = false;
+
+        public int Age
+        {
+            get
+            {
+                if (_isOverAge)
+                    return _age;
+                else
+                    return -2;
+            }
+
+            set
+            {
+                if (value >= 18)
+                    _isOverAge = true;
+                else
+                    _isOverAge = false;
+
+                _age = value;
+            }
+        }
 
         public Address HomeAddress {  get; set; }
 
@@ -39,6 +64,7 @@ namespace BankIS.ConsoleApp
 
             Console.WriteLine(Name);
             Console.WriteLine(Age);
+
 
             if (HomeAddress != null && !string.IsNullOrEmpty(HomeAddress.Street))
             {
@@ -49,6 +75,24 @@ namespace BankIS.ConsoleApp
                 Console.WriteLine("Adresa nezadana!\n");
             }
             //Console.WriteLine(HomeAddress.City);
+            
+        }
+        
+        public void SaveToFile(string filePath)
+        {
+            File.WriteAllText(filePath, ToString());
+        }
+
+        public override string ToString()
+        {
+            if (HomeAddress != null && !string.IsNullOrEmpty(HomeAddress.Street))
+            {
+                return $"{Name};{Age};{HomeAddress.Street};{HomeAddress.City}";
+            }
+            else
+            {
+                return $"{Name};{Age}";
+            }
         }
     }
 }
