@@ -50,13 +50,10 @@ namespace BankIS.ConsoleApp
 
             //var result = clients.Where(c => c.Age >= 37).OrderBy(c => c.Age).ToList();
             var result = clients
-                .Where(c => c.HomeAddress.City == "Olomouc")
-                .Where(c => c.Age > 20)
-                .Where(c => c.Age < 40)
-                .OrderBy(c => c.Age)
-                .ToList();
-                
-
+                .Where(c => c.HomeAddress.City == "Brno").ToList();
+            
+            var brno = result.Count;
+            // OR -> || , AND -> &&
 
             //.Where(c => c.HomeAddress.City == "Brno")
             //.OrderBy(c => c.Name)
@@ -66,11 +63,11 @@ namespace BankIS.ConsoleApp
             //var over30 = clients.Where(client => client.Age > 36).ToList();
 
             //Console.WriteLine($"\n Clients from Brno: \n");
-            //Console.WriteLine($"Max age: {result}");
-            foreach (var client in result)
-            {
-                Console.WriteLine(client);
-            }
+            Console.WriteLine($"Lide z Brna: {brno}");
+            //foreach (var client in result)
+            //{
+            //    Console.WriteLine(client);
+            //}
 
 
             //Client.ListToFile(clients, "ListOfClients.txt");
