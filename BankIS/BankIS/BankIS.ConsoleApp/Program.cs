@@ -42,6 +42,8 @@ namespace BankIS.ConsoleApp
                 Console.WriteLine($"Klient: {client}");
             }
 
+            Client.ListToFile(clients, "ListOfClients.txt");
+
             //Console.WriteLine(cnt);
 
 

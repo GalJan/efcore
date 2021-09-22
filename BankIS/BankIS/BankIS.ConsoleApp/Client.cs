@@ -93,6 +93,18 @@ namespace BankIS.ConsoleApp
             {
                 return $"{Name};{Age}";
             }
+
+        
+        }
+        public static void ListToFile(IEnumerable<Client> clients, string filepath)
+        {
+            foreach(var client in clients)
+            {
+                var newLine = Environment.NewLine;
+                var clientWithNewLine = client.ToString() + newLine;
+                File.AppendAllText(filepath, clientWithNewLine);
+                
+            }
         }
     }
 }
