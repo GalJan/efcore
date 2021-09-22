@@ -49,9 +49,8 @@ namespace BankIS.ConsoleApp
             //var result = clients.OrderBy(c => c.Age);
 
             //var result = clients.Where(c => c.Age >= 37).OrderBy(c => c.Age).ToList();
-            var result = clients
-                .Where(c => c.HomeAddress.City == "Praha")
-                .Average(c => c.Age);
+            var result = clients.Select(c => c.HomeAddress.City).Distinct().ToList();
+                
             
             //var brno = result.Count;
             // OR -> || , AND -> &&
@@ -64,11 +63,11 @@ namespace BankIS.ConsoleApp
             //var over30 = clients.Where(client => client.Age > 36).ToList();
 
             //Console.WriteLine($"\n Clients from Brno: \n");
-            Console.WriteLine($"Prumer Praha: {result}");
-            //foreach (var client in result)
-            //{
-            //    Console.WriteLine(client);
-            //}
+            //Console.WriteLine($"Prumer Praha: {result}");
+            foreach (var client in result)
+            {
+                Console.WriteLine(client);
+            }
 
 
             //Client.ListToFile(clients, "ListOfClients.txt");
