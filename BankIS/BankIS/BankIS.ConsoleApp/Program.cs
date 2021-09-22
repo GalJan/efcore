@@ -46,11 +46,14 @@ namespace BankIS.ConsoleApp
                 Console.WriteLine($"Klient: {client}");
             }
 
-            var result = clients.OrderBy(c => c.Age);
+            //var result = clients.OrderBy(c => c.Age);
+
+            //var result = clients.Where(c => c.Age >= 37).OrderBy(c => c.Age).ToList();
+            var result = clients.Where(c => c.HomeAddress.City == "Brno").OrderBy(c => c.Name).ToList();
 
             //var over30 = clients.Where(client => client.Age > 36).ToList();
 
-            Console.WriteLine($"\nOrder by age: \n");
+            Console.WriteLine($"\n Clients from Brno: \n");
             foreach(var client in result)
             {
                  client.Print();
