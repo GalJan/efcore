@@ -57,6 +57,7 @@ namespace BankIS.ConsoleApp
             }
         }
 
+        public int ID { get; set; }
         public Address HomeAddress { get; set; }
 
         public void Print()

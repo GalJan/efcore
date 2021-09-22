@@ -8,6 +8,9 @@ namespace BankIS.ConsoleApp
     {
         static void Main(string[] args)
         {
+
+            BankContext context = new BankContext();
+            context.Database.EnsureCreated();   
             //Console.WriteLine("Hello World!");
 
             //Address ostrava = new Address("Tovarni 13", "Ostrava");
@@ -76,6 +79,7 @@ namespace BankIS.ConsoleApp
             //{
             //    Console.WriteLine(client);
             //}
+
 
 
             //Client.ListToFile(clients, "ListOfClients.txt");
