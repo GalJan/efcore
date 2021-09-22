@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BankIS.ConsoleApp
 {
@@ -19,30 +20,47 @@ namespace BankIS.ConsoleApp
             //client1.Name = "Jan Novak";
             //client1.Age = 31;
 
-            var client1 = new Client("Pepa Koutny", "Machova 126", "Myslocovice",46);
-            var client2 = new Client("Jan Novak", "Myslocovice 26", "Myslocovice", 26);
-            var client3 = new Client("Veronika Dlouha", "Sevcova 55", "Zlin", 36);
-            var client4 = new Client("Magda Novakova", "Maleninskeho 6", "Malenovice", 44);
-            var client5 = new Client("Jiri Dvorak", "Hlavni 23", "Brno", 37);
+            var filepath = "ListOfClients.txt";
+            Console.WriteLine($"Nacitam z: {filepath}!");
 
-            List<Client> clients = new List<Client>();
+            //var client1 = new Client("Pepa Koutny", "Machova 126", "Myslocovice",46);
+            //var client2 = new Client("Jan Novak", "Myslocovice 26", "Myslocovice", 26);
+            //var client3 = new Client("Veronika Dlouha", "Sevcova 55", "Zlin", 36);
+            //var client4 = new Client("Magda Novakova", "Maleninskeho 6", "Malenovice", 44);
+            //var client5 = new Client("Jiri Dvorak", "Hlavni 23", "Brno", 37);
 
-            clients.Add(client1); 
-            clients.Add(client2);
-            clients.Add(client3);
-            clients.Add(client4);
-            clients.Add(client5);
+            var clients = Client.LoadClients(filepath);
+
+            //clients.Add(client1); 
+            //clients.Add(client2);
+            //clients.Add(client3);
+            //clients.Add(client4);
+            //clients.Add(client5);
 
             var cnt = clients.Count;
 
-            Console.WriteLine("Pocet klientu v seznamu: {0}\n5",cnt);
+            Console.WriteLine("Pocet klientu v seznamu: {0}\n",cnt);
 
             foreach(var client in clients)
             {
                 Console.WriteLine($"Klient: {client}");
             }
 
-            Client.ListToFile(clients, "ListOfClients.txt");
+            var result = clients.OrderBy(c => c.Age);
+
+            //var over30 = clients.Where(client => client.Age > 36).ToList();
+
+            Console.WriteLine($"\nOrder by age: \n");
+            foreach(var client in result)
+            {
+                 client.Print();
+            }
+
+
+            //Client.ListToFile(clients, "ListOfClients.txt");
+
+            //var ListOfClients = Client.LoadClients("ListOfClients.txt");
+
 
             //Console.WriteLine(cnt);
 
