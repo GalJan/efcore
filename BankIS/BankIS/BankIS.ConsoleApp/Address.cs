@@ -23,10 +23,12 @@ namespace BankIS.ConsoleApp
 
         public string City {  get; set; }  
 
-        public void Print(string street, string city)
+        public string zipcode { get; set; }  
+
+        public void Print()
         {
           
-            Console.WriteLine("{0}, {1}\n", street, city);
+            Console.WriteLine("{0}, {1}\n", Street, City);
         }
     }
 }

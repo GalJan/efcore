@@ -32,51 +32,58 @@ namespace BankIS.ConsoleApp
         }
         public string Name { get; set; }
 
+        public int Age { get; set; }    
+
         //public int Age { get; set; }
-        private int _age;
-        private bool _isOverAge = false;
+        //private int _age;
+        //private bool _isOverAge = false;
 
-        public int Age
-        {
-            get
-            {
-                if (_isOverAge)
-                    return _age;
-                else
-                    return -2;
-            }
+        //public int Age
+        //{
+        //    get
+        //    {
+        //        if (_isOverAge)
+        //            return _age;
+        //        else
+        //            return -2;
+        //    }
 
-            set
-            {
-                if (value >= 18)
-                    _isOverAge = true;
-                else
-                    _isOverAge = false;
+        //    set
+        //    {
+        //        if (value >= 18)
+        //            _isOverAge = true;
+        //        else
+        //            _isOverAge = false;
 
-                _age = value;
-            }
-        }
+        //        _age = value;
+        //    }
+        //}
 
         public int ID { get; set; }
         public Address HomeAddress { get; set; }
 
-        public void Print()
-        {
+        //public void Print()
+        //{
 
-            Console.WriteLine(Name + ", "+ Age);
+        //    Console.WriteLine(Name + ", "+ Age);
            
 
 
-            if (HomeAddress != null && !string.IsNullOrEmpty(HomeAddress.Street))
-            {
-                HomeAddress.Print(HomeAddress.Street,HomeAddress.City);
-            }
-            else
-            {
-                Console.WriteLine("Adresa nezadana!\n");
-            }
-            //Console.WriteLine(HomeAddress.City);
+        //    if (HomeAddress != null && !string.IsNullOrEmpty(HomeAddress.Street))
+        //    {
+        //        HomeAddress.Print(HomeAddress.Street,HomeAddress.City);
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("Adresa nezadana!\n");
+        //    }
+        //    //Console.WriteLine(HomeAddress.City);
 
+        //}
+
+        public void Print()
+        {
+            Console.WriteLine(ToString());
         }
 
         //internal void Print()
@@ -84,10 +91,10 @@ namespace BankIS.ConsoleApp
         //    throw new NotImplementedException();
         //}
 
-        public void SaveToFile(string filePath)
-        {
-            File.WriteAllText(filePath, ToString());
-        }
+        //public void SaveToFile(string filePath)
+        //{
+        //    File.WriteAllText(filePath, ToString());
+        //}
 
         public override string ToString()
         {
@@ -102,7 +109,7 @@ namespace BankIS.ConsoleApp
 
 
         }
-            public static void ListToFile(IEnumerable<Client> clients, string filepath)
+        public static void ListToFile(IEnumerable<Client> clients, string filepath)
         {
             foreach (var client in clients)
             {
@@ -113,13 +120,13 @@ namespace BankIS.ConsoleApp
             }
         }
 
-        public static  List<Client> LoadClients(string filepath)
+        public static List<Client> LoadClients(string filepath)
         {
             List<Client> result = new List<Client>();
 
             var lines = File.ReadAllLines(filepath);
 
-            foreach(var line in lines)
+            foreach (var line in lines)
             {
                 var items = line.Split(';');
                 var name = items[0];
