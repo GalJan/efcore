@@ -20,7 +20,7 @@ namespace BankIS.ConsoleApp
             //client1.Name = "Jan Novak";
             //client1.Age = 31;
 
-            var filepath = "ListOfClients.txt";
+            var filepath = "dataset_1.txt";
             Console.WriteLine($"Nacitam z: {filepath}!");
 
             //var client1 = new Client("Pepa Koutny", "Machova 126", "Myslocovice",46);
@@ -41,23 +41,32 @@ namespace BankIS.ConsoleApp
 
             Console.WriteLine("Pocet klientu v seznamu: {0}\n",cnt);
 
-            foreach(var client in clients)
-            {
-                Console.WriteLine($"Klient: {client}");
-            }
+            //foreach(var client in clients)
+            //{
+            //    Console.WriteLine($"Klient: {client}");
+            //}
 
             //var result = clients.OrderBy(c => c.Age);
 
             //var result = clients.Where(c => c.Age >= 37).OrderBy(c => c.Age).ToList();
-            var result = clients.Where(c => c.HomeAddress.City == "Brno").OrderBy(c => c.Name).ToList();
+            var result = clients
+                .Select(c => new { c.Name, c.Age });
+                
+
+
+            //.Where(c => c.HomeAddress.City == "Brno")
+            //.OrderBy(c => c.Name)
+            //.Max(c => c.Age);
+            //.ToList();
 
             //var over30 = clients.Where(client => client.Age > 36).ToList();
 
-            Console.WriteLine($"\n Clients from Brno: \n");
-            foreach(var client in result)
-            {
-                 client.Print();
-            }
+            //Console.WriteLine($"\n Clients from Brno: \n");
+            Console.WriteLine($"Max age: {result}");
+            //foreach (var item in result)
+            //{
+            //    Console.WriteLine($"{item.Name} {item.Street} {item.City}");
+            //}
 
 
             //Client.ListToFile(clients, "ListOfClients.txt");

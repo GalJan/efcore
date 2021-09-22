@@ -62,8 +62,8 @@ namespace BankIS.ConsoleApp
         public void Print()
         {
 
-            Console.WriteLine(Name);
-            Console.WriteLine(Age);
+            Console.WriteLine(Name + ", "+ Age);
+           
 
 
             if (HomeAddress != null && !string.IsNullOrEmpty(HomeAddress.Street))
@@ -101,7 +101,7 @@ namespace BankIS.ConsoleApp
 
 
         }
-        public static void ListToFile(IEnumerable<Client> clients, string filepath)
+            public static void ListToFile(IEnumerable<Client> clients, string filepath)
         {
             foreach (var client in clients)
             {
