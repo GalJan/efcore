@@ -35,11 +35,11 @@ namespace BankIS.ConsoleApp
 
             var cnt = clients.Count;
 
-            Console.WriteLine("Pocet klientu v seznamu: {0}",cnt);
+            Console.WriteLine("Pocet klientu v seznamu: {0}\n5",cnt);
 
             foreach(var client in clients)
             {
-                Console.WriteLine("Klient: {0}",client);
+                Console.WriteLine($"Klient: {client}");
             }
 
             //Console.WriteLine(cnt);
