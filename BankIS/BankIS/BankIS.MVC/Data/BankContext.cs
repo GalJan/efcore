@@ -20,6 +20,8 @@ namespace BankIS.MVC.Data
 
         public DbSet<Address> Addresses { get; set; }
 
+        public DbSet<Transaction> Transactions {get;set;}
+
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

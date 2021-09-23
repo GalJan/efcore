@@ -17,6 +17,7 @@ namespace BankIS.MVC.Models
         public Client()
         {
             HomeAddress = new Address();
+            //Transactions = new List<Transaction>();
 
         }
         public Client(string street, string city)
@@ -90,6 +91,8 @@ namespace BankIS.MVC.Models
                 return 0;
             }
         }
+
+        public List<Transaction> Transactions { get; set; } = new List<Transaction>();
 
         //public void Print()
         //{
@@ -174,6 +177,11 @@ namespace BankIS.MVC.Models
         public static bool CheckName(Client client)
         {
             return !string.IsNullOrWhiteSpace(client.LastName);
+        }
+
+        public double AccountSum()
+        {
+            return Transactions.Select(t => t.Value).Sum();
         }
     }
 }

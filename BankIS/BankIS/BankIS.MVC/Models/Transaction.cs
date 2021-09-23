@@ -18,6 +18,10 @@ namespace BankIS.MVC.Models
         /// Kreditni operace jsou kladne hodnoty
         /// </summary>
         public double Value {  get; set; }
+
+        public int ClientId {  get; set; }
+
+        public Client Client { get; set; }
     }
 
     public enum TransactionType
