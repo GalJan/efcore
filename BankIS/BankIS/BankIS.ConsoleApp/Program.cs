@@ -17,15 +17,19 @@ namespace BankIS.ConsoleApp
 
                 Console.WriteLine("Pocet klientu v seznamu: {0}\n", cnt);
 
-                var oldest = context.Clients.OrderByDescending(c => c.Age).First();
+                //var result = context.Clients.GroupBy(c => c.Age);
 
-                oldest.Print();
+                var result = context.Clients.Where(c => c.Age > 50)
+                        .ToList().Where(c => Client.CheckName(c));
+                               
 
-                Console.WriteLine($"Remove the oldest person: {oldest}");
+                //oldest.Print();
+
+                //Console.WriteLine($"Remove the oldest person: {oldest}");
                 //oldest.Age = 70;
-                context.Remove(oldest);
+                //context.Remove(oldest);
 
-                context.SaveChanges();
+                //context.SaveChanges();
 
 
                 //Console.WriteLine($"New Age is: {oldest.Age}");
@@ -63,9 +67,14 @@ namespace BankIS.ConsoleApp
 
 
                 //context.Database.EnsureCreated();
-                //foreach (var client in clients)
+                //foreach (var client in result)
                 //{
-                //    context.Clients.Add(client);
+                //    //context.Clients.Add(client);
+                //    Console.WriteLine($"group: {client.Key}");
+                //    foreach(var c in client)
+                //    {
+                //        Console.WriteLine("  " + c);
+                //    }
                 //}
 
                 //context.SaveChanges();

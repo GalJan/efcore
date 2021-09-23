@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-
-namespace BankIS.ConsoleApp
+namespace BankIS.MVC.Models
 {
     public class Client
     {
@@ -22,17 +23,22 @@ namespace BankIS.ConsoleApp
             HomeAddress.Street = street;
             HomeAddress.City = city;
         }
-        public Client(string name, string street, string city, int age)
+        public Client(string name, string street, string city)
         {
             HomeAddress = new Address();
-            Name = name;
+            //Name = name;
             HomeAddress.Street = street;
             HomeAddress.City = city;
-            Age = age;
-        }
-        public string Name { get; set; }
 
-        public int Age { get; set; }    
+        }
+
+        [MaxLength(100)]
+        public string FirstName { get; set; }
+
+        [MaxLength(100)]
+        public string LastName { get; set; }
+
+        public DateTime DateOfBirth { get; set; }
 
         //public int Age { get; set; }
         //private int _age;
@@ -62,11 +68,24 @@ namespace BankIS.ConsoleApp
         public int ID { get; set; }
         public Address HomeAddress { get; set; }
 
+        [NotMapped]
+        public int Age 
+        { 
+            get
+            {
+                return GetAge();
+            }
+        }    
+        public int GetAge()
+        {
+            return DateTime.Now.Year - DateOfBirth.Year;
+        }
+
         //public void Print()
         //{
 
         //    Console.WriteLine(Name + ", "+ Age);
-           
+
 
 
         //    if (HomeAddress != null && !string.IsNullOrEmpty(HomeAddress.Street))
@@ -100,11 +119,11 @@ namespace BankIS.ConsoleApp
         {
             if (HomeAddress != null && !string.IsNullOrEmpty(HomeAddress.Street))
             {
-                return $"{Name};{Age};{HomeAddress.Street};{HomeAddress.City}";
+                return $"{FirstName};{LastName};{Age()};{HomeAddress.Street};{HomeAddress.City}";
             }
             else
             {
-                return $"{Name};{Age}";
+                return $"{FirstName};{LastName};{Age()}";
             }
 
 
@@ -120,27 +139,27 @@ namespace BankIS.ConsoleApp
             }
         }
 
-        public static List<Client> LoadClients(string filepath)
-        {
-            List<Client> result = new List<Client>();
+        //public static List<Client> LoadClients(string filepath)
+        //{
+        //    List<Client> result = new List<Client>();
 
-            var lines = File.ReadAllLines(filepath);
+        //    var lines = File.ReadAllLines(filepath);
 
-            foreach (var line in lines)
-            {
-                var items = line.Split(';');
-                var name = items[0];
-                var age = int.Parse(items[1]);
-                var street = items[2];
-                var city = items[3];
+        //    foreach (var line in lines)
+        //    {
+        //        var items = line.Split(';');
+        //        var name = items[0];
+        //        var age = int.Parse(items[1]);
+        //        var street = items[2];
+        //        var city = items[3];
 
-                Client c = new Client(name, street, city, age);
+        //        Client c = new Client(name, street, city, age);
 
-                result.Add(c);
-            }
+        //        result.Add(c);
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
 
         public static bool CheckName(Client client)
         {
@@ -148,3 +167,4 @@ namespace BankIS.ConsoleApp
         }
     }
 }
+
