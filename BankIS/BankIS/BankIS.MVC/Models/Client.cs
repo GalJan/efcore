@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using System.IO;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace BankIS.MVC.Models
 {
+    [Index(nameof(LastName))]
     public class Client
     {
 
@@ -36,9 +38,10 @@ namespace BankIS.MVC.Models
         public string FirstName { get; set; }
 
         [MaxLength(100)]
+        [Required]
         public string LastName { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         //public int Age { get; set; }
         //private int _age;
@@ -78,7 +81,14 @@ namespace BankIS.MVC.Models
         }    
         public int GetAge()
         {
-            return DateTime.Now.Year - DateOfBirth.Year;
+            if(DateOfBirth.HasValue)
+            {
+                return DateTime.Now.Year - DateOfBirth.Value.Year;
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         //public void Print()
@@ -119,11 +129,11 @@ namespace BankIS.MVC.Models
         {
             if (HomeAddress != null && !string.IsNullOrEmpty(HomeAddress.Street))
             {
-                return $"{FirstName};{LastName};{Age()};{HomeAddress.Street};{HomeAddress.City}";
+                return $"{FirstName};{LastName};{Age};{HomeAddress.Street};{HomeAddress.City}";
             }
             else
             {
-                return $"{FirstName};{LastName};{Age()}";
+                return $"{FirstName};{LastName};{Age}";
             }
 
 
@@ -163,7 +173,7 @@ namespace BankIS.MVC.Models
 
         public static bool CheckName(Client client)
         {
-            return !string.IsNullOrWhiteSpace(client.Name);
+            return !string.IsNullOrWhiteSpace(client.LastName);
         }
     }
 }

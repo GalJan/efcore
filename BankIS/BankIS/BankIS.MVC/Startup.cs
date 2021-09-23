@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace BankIS.MVC
 {
     public class Startup
-    {
+    {  
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
